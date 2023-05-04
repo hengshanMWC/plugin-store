@@ -4,7 +4,7 @@
   "packageManager": "pnpm@7.21.0",
   "license": "MIT",
   "homepage": "https://github.com/hengshanMWC/plugin-store#readme",
-  "types": "typeings",
+  "types": "typings",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hengshanMWC/plugin-store.git"
