@@ -32,6 +32,7 @@ type AddType<T> = T | CreatePluginData<T>
 export class PluginGroup<T extends {
   id: any
 }> {
+  map: Map<string, T>
   use(...plugins: Array<AddType<T> | string>): Promise<void>
   get(id: T['id']): T | undefined
   remove(id: string): void

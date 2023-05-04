@@ -2,7 +2,7 @@ type CreatePluginData<T> = () => T
 
 type AddType<T> = T | CreatePluginData<T>
 export class PluginGroup<T extends { id: any }> {
-  private map: Map<string, T> = new Map()
+  map: Map<string, T> = new Map()
 
   async use(...plugins: Array< AddType<T> | string>) {
     for (let i = 0; i < plugins.length; i++) {
