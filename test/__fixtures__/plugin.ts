@@ -4,13 +4,8 @@ export function createTestPlugin() {
   }
 }
 
-// export function createTestPlugin (): PluginData {
-//   return {
-//     id: 'plugin',
-//     command: 'plugin',
-//     description: 'plugin description',
-//     action: () => {
-
-//     },
-//   }
-// }
+export default function () {
+  return {
+    id: 'default',
+  }
+}

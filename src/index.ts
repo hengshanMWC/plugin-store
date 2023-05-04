@@ -1,11 +1,13 @@
 type CreatePluginData<T> = () => T
+
+type AddType<T> = T | CreatePluginData<T>
 export class PluginStore<T extends { id: any }> {
   map: Map<string, T> = new Map()
 
-  add(plugin: T | CreatePluginData<T>) {
+  add(plugin: AddType<T>) {
     const pluginData: T = typeof plugin === 'function' ? plugin() : plugin
     if (this.map.has(pluginData.id)) {
-      console.log('有重复的plugin id')
+      console.log('There are duplicate plugin ID')
     }
     else {
       this.map.set(pluginData.id, pluginData)
@@ -15,10 +17,10 @@ export class PluginStore<T extends { id: any }> {
 
   async readAdd(route: string) {
     const plugin = await import(route)
-    return this.add(plugin)
+    return this.add(plugin.default)
   }
 
-  async use(...plugins: Array<T | string>) {
+  async use(...plugins: Array< AddType<T> | string>) {
     for (let i = 0; i < plugins.length; i++) {
       const plugin = plugins[i]
       if (typeof plugin === 'string') {
