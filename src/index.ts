@@ -4,7 +4,7 @@ type AddType<T> = T | CreatePluginData<T>
 export class PluginGroup<T extends { id: any }> {
   map: Map<string, T> = new Map()
 
-  async use(...plugins: Array< AddType<T> | string>) {
+  async use(...plugins: Array<AddType<T> | string>) {
     for (let i = 0; i < plugins.length; i++) {
       const plugin = plugins[i]
       if (typeof plugin === 'string') {
@@ -37,6 +37,7 @@ export class PluginGroup<T extends { id: any }> {
 
   private async readAdd(route: string) {
     const plugin = await import(route)
-    return this.add(plugin.default)
+    // nodejs会多包一层default
+    return this.add(plugin.default?.default ?? plugin.default)
   }
 }
