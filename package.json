@@ -1,9 +1,10 @@
 {
   "name": "plugin-group",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "packageManager": "pnpm@7.21.0",
   "license": "MIT",
   "homepage": "https://github.com/hengshanMWC/plugin-store#readme",
+  "types": "typeings",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hengshanMWC/plugin-store.git"
