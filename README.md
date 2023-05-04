@@ -1,33 +1,70 @@
-# introduce
-- [x] vite :package:
-- [x] vitest :sheep:
-- [x] typescript :alien:
-- [x] eslint、husky :flashlight:
+# Overview
+加载储存插件，支持函数、对象、路径引入
 
-# init
-
+# Install
+安装依赖
 ```
-git clone https://github.com/hengshanMWC/plugin-store.git
-cd plugin-store
-pnpm i
+npm i plugin-store
+```
+```js
+// esm
+import { PluginStore } from 'plugin-Store'
+
+const pluginStore = new PluginStore()
+```
+```js
+// cjs
+const { PluginStore } = require('plugin-Store')
+
+const pluginStore = new PluginStore()
+```
+```js
+// script引入
+<script src="https://unpkg.com/box-cat/dist/boxCat.js"></script>
+const pluginStore = new PluginStore.PluginStore()
 ```
 
-# publish test
-
-next, simulate the publish process
-
-## build local NPM source
-
+# Class
+PluginStore类型
+```ts
+type CreatePluginData<T> = () => T
+type AddType<T> = T | CreatePluginData<T>
+export class PluginStore<T extends {
+  id: any
+}> {
+  use(...plugins: Array<AddType<T> | string>): Promise<void>
+  get(id: T['id']): T | undefined
+  remove(id: string): void
+}
 ```
-npm install -g verdaccio
-verdaccio
+# Api
+## use
+注册插件，数据结构需要带id字段，用来标识插件id，防止重复注册。
+
+路径注册通过 import 读取**默认导出**的插件
+```js
+pluginStore.use({
+  id: 'test'
+}, createPlugin(), './plugin')
 ```
 
-Of course, if you want to use it formally, please modify it `.npmrc`
-
-If you want some of the packages to specify NPM source, you can modify the package Publishconfig. JSON registry
-
-## release
+## get
+通过id获取插件
+```ts
+const id = 'test'
+pluginStore.use({
+  id
+})
+pluginStore.get(id).id === id
 ```
-npm run release
+
+## remove
+通过id删除插件
+```ts
+pluginStore.remove('test')
 ```
+
+
+
+
+
