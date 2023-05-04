@@ -7,7 +7,7 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "declaration": true,
-    "declarationDir": "typeings",
+    "declarationDir": "typings",
     "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
