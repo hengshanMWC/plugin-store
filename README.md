@@ -8,28 +8,28 @@ npm i plugin-store
 ```
 ```js
 // esm
-import { PluginStore } from 'plugin-Store'
+import { PluginGroup } from 'plugin-Store'
 
-const pluginStore = new PluginStore()
+const pluginGroup = new PluginGroup()
 ```
 ```js
 // cjs
-const { PluginStore } = require('plugin-Store')
+const { PluginGroup } = require('plugin-Store')
 
-const pluginStore = new PluginStore()
+const pluginGroup = new PluginGroup()
 ```
 ```js
 // script引入
 <script src="https://unpkg.com/box-cat/dist/boxCat.js"></script>
-const pluginStore = new PluginStore.PluginStore()
+const pluginGroup = new PluginGroup.PluginGroup()
 ```
 
 # Class
-PluginStore类型
+PluginGroup类型
 ```ts
 type CreatePluginData<T> = () => T
 type AddType<T> = T | CreatePluginData<T>
-export class PluginStore<T extends {
+export class PluginGroup<T extends {
   id: any
 }> {
   use(...plugins: Array<AddType<T> | string>): Promise<void>
@@ -43,7 +43,7 @@ export class PluginStore<T extends {
 
 路径注册通过 import 读取**默认导出**的插件
 ```js
-pluginStore.use({
+pluginGroup.use({
   id: 'test'
 }, createPlugin(), './plugin')
 ```
@@ -52,16 +52,16 @@ pluginStore.use({
 通过id获取插件
 ```ts
 const id = 'test'
-pluginStore.use({
+pluginGroup.use({
   id
 })
-pluginStore.get(id).id === id
+pluginGroup.get(id).id === id
 ```
 
 ## remove
 通过id删除插件
 ```ts
-pluginStore.remove('test')
+pluginGroup.remove('test')
 ```
 
 

@@ -1,7 +1,7 @@
 type CreatePluginData<T> = () => T
 
 type AddType<T> = T | CreatePluginData<T>
-export class PluginStore<T extends { id: any }> {
+export class PluginGroup<T extends { id: any }> {
   private map: Map<string, T> = new Map()
 
   async use(...plugins: Array< AddType<T> | string>) {
