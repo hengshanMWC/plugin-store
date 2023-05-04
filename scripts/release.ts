@@ -7,6 +7,6 @@ console.log(`${colors.cyan.bold('release: start')} 🏗`);
   execSync('npm run test', { stdio: 'inherit' })
   execSync('npm run build', { stdio: 'inherit' })
   await versionBump()
-  execSync('npm publish --access public', { stdio: 'inherit' })
+  execSync('npm publish', { stdio: 'inherit' })
 })()
 console.log(`${colors.cyan.bold('release: success')} 🎉🎉🎉🎉🎊`)
