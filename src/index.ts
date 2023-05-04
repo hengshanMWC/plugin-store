@@ -16,7 +16,7 @@ export class PluginStore<T extends { id: any }> {
     }
   }
 
-  getPlugin(id: T['id']) {
+  get(id: T['id']) {
     return this.map.get(id)
   }
 
