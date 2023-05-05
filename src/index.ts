@@ -37,7 +37,7 @@ export class PluginGroup<T extends { id: any }> {
 
   private async readAdd(route: string) {
     const plugin = await import(route)
-    // nodejs会多包一层default
+    // nodejs兼容esm导出，会多包一层default
     return this.add(plugin.default?.default ?? plugin.default)
   }
 }
