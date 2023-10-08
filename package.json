@@ -60,5 +60,8 @@
   },
   "lint-staged": {
     "{server,client}/*.{js,ts,json,md,tsx}": "pnpm lint"
+  },
+  "dependencies": {
+    "load-code": "^2.1.1"
   }
 }

@@ -1,3 +1,4 @@
+import { loadFileCode } from 'load-code'
 type CreatePluginData<T> = () => T
 
 type AddType<T> = T | CreatePluginData<T>
@@ -36,8 +37,7 @@ export class PluginGroup<T extends { id: any }> {
   }
 
   private async readAdd(route: string) {
-    const plugin = await import(route)
-    // nodejs会多包一层default
-    return this.add(plugin.default?.default ?? plugin.default)
+    const { data } = await loadFileCode(route)
+    return this.add(data)
   }
 }
