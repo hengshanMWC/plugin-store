@@ -1,6 +1,6 @@
 {
   "name": "plugin-group",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "packageManager": "pnpm@7.21.0",
   "license": "MIT",
   "homepage": "https://github.com/hengshanMWC/plugin-store#readme",
