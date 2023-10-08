@@ -19,7 +19,13 @@
     "plugin",
     "store"
   ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "scripts": {
+    "commit": "cz",
     "release": "esno ./scripts/release",
     "build": "vite build && tsc",
     "test": "vitest",
@@ -40,6 +46,8 @@
     "bumpp": "^9.1.0",
     "change-case": "^4.1.2",
     "colors": "^1.4.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.39.0",
     "esno": "^0.16.3",
     "husky": "^7.0.4",
